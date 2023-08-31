@@ -1,9 +1,9 @@
 {
-  "title": "GDG DevFest Season 2018",
+  "title": "Tech Summit 2023",
   "description": "Join the community, learn new things!",
   "image": "images/social-share.jpg",
   "keywords": "event, gdg, gde, devfest, google, programming, android, chrome, polymer, developers, web, cloud, androiddev",
-  "dates": "October 12-13, 2018",
+  "dates": "October 18-19, 2023",
   "partnershipProposition": "https://bit.ly/dfua17-partners",
   "share": "Share",
   "followOur": "Follow our",
@@ -44,8 +44,8 @@
       "title": "About",
       "links": [
         {
-          "name": "GDG Lviv",
-          "url": "http://lviv.gdg.org.ua/",
+          "name": "Techub Gurgaon",
+          "url": " ",
           "newTab": true
         },
         {
@@ -135,8 +135,8 @@
     "title": "About",
     "callToAction": {
       "featuredSessions": {
-        "description": "GDG DevFest Ukraine brings together the world class experts in Android, Web and Cloud technologies to Lviv for 2 days of sessions, workshops and showcases.",
-        "label": "Explore featured session",
+        "description": "Tech Summit 2023 is coming to Gurgaon on 18-19 October 2023. The mega fest of technology, bringing together the tech community for hands-on learning experiences and community building. The theme for this year’s summit is #OneByteAtAtime, a Hyper-Local event that seeks to inspire innovation, foster collaboration, and provide local networking and knowledge exchange.",
+        
         "link": "https://www.youtube.com/playlist?list=PLt8lEzcLNl31AouwDkbLbLARlQFwNS2en"
       },
       "howItWas": {

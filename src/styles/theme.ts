@@ -2,9 +2,9 @@ import { css } from 'lit';
 
 export const theme = css`
   :host {
-    --dark-primary-color: #512da8;
-    --default-primary-color: #673ab7;
-    --focused-color: #311b92;
+    --dark-primary-color: #0098cf;
+    --default-primary-color: #00b0f0;
+    --focused-color: #029ad2;
     --light-primary-color: #d1c4e9;
     --text-primary-color: #fff;
     --accent-color: #ff5252;
@@ -38,7 +38,7 @@ export const theme = css`
       sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     --max-container-width: 1280px;
     --primary-color-transparent: rgb(103 58 183 / 10%);
-    --primary-color-light: rgb(103 58 183 / 80%);
+    --primary-color-light: rgb(18 185 246 / 80%);
     --primary-color-white: #ede7f6;
 
     /* Labels */

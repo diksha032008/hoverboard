@@ -153,6 +153,12 @@ export class HomePage extends ReduxMixin(PolymerElement) {
             font-size: 28px;
             line-height: 1.1;
           }
+
+          .my-items {
+            margin-top: 350px;
+            font-size: 38px;
+            font-color="#20AFEE"
+          }
         }
       </style>
 
@@ -160,27 +166,11 @@ export class HomePage extends ReduxMixin(PolymerElement) {
         id="hero"
         background-image="[[heroSettings.background.image]]"
         background-color="[[heroSettings.background.color]]"
-        font-color="[[heroSettings.fontColor]]"
+        font-color="#20AFEE"
         hide-logo
       >
         <div class="home-content" layout vertical center>
-          <lazy-image class="hero-logo" src="/images/logo.svg" alt="[[siteTitle]]"></lazy-image>
 
-          <div class="info-items">
-            <div class="info-item">[[city]]. [[dates]]</div>
-            <div class="info-item">[[heroSettings.description]]</div>
-          </div>
-
-          <div class="action-buttons" layout horizontal center-justified wrap>
-            <paper-button class="watch-video" on-click="playVideo">
-              <iron-icon icon="hoverboard:movie"></iron-icon>
-              [[viewHighlights]]
-            </paper-button>
-            <paper-button on-click="scrollToTickets" primary invert>
-              <iron-icon icon="hoverboard:ticket"></iron-icon>
-              [[buyTicket]]
-            </paper-button>
-          </div>
 
           <div class="scroll-down" on-click="scrollNextBlock">
             <svg
@@ -263,7 +253,9 @@ export class HomePage extends ReduxMixin(PolymerElement) {
     `;
   }
 
-  private city = location.city;
+  private city = "Techub India";
+  private adidasTitle = "Adidas Tech Summit"
+  private OneByteAtATime = "#OneByteAtATime"
   private siteTitle = title;
   private dates = dates;
   private viewHighlights = viewHighlights;
@@ -277,12 +269,7 @@ export class HomePage extends ReduxMixin(PolymerElement) {
   @property({ type: Boolean })
   private showForkMeBlock: boolean = false;
 
-  private playVideo() {
-    openVideoDialog({
-      title: this.aboutBlock.callToAction.howItWas.label,
-      youtubeId: this.aboutBlock.callToAction.howItWas.youtubeId,
-    });
-  }
+  
 
   private scrollToTickets() {
     const element = this.$['tickets-block'];
