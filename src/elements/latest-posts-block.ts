@@ -88,40 +88,6 @@ export class LatestPostsBlock extends ReduxMixin(PolymerElement) {
         }
       </style>
 
-      <div class="container">
-        <h1 class="container-title">[[latestPostsBlock.title]]</h1>
-
-        <div class="posts-wrapper">
-          <template is="dom-repeat" items="[[latestPosts]]" as="post">
-            <a href$="[[postUrl(post.id)]]" class="post card" flex layout vertical>
-              <lazy-image
-                class="image"
-                src="[[post.image]]"
-                alt="[[post.title]]"
-                style$="background-color: [[post.backgroundColor]];"
-              ></lazy-image>
-              <div class="details" layout vertical justified flex-auto>
-                <div>
-                  <text-truncate lines="2">
-                    <h3 class="title">[[post.title]]</h3>
-                  </text-truncate>
-                  <text-truncate lines="3">
-                    <short-markdown class="description" content="[[post.brief]]"></short-markdown>
-                  </text-truncate>
-                </div>
-                <div class="date">[[getDate(post.published)]]</div>
-              </div>
-            </a>
-          </template>
-        </div>
-
-        <a href="[[latestPostsBlock.callToAction.link]]">
-          <paper-button class="cta-button animated icon-right">
-            <span>[[latestPostsBlock.callToAction.label]]</span>
-            <iron-icon icon="hoverboard:arrow-right-circle"></iron-icon>
-          </paper-button>
-        </a>
-      </div>
     `;
   }
 

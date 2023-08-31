@@ -36,6 +36,7 @@ export class FooterBlock extends PolymerElement {
         }
 
         .fab {
+          margin-bottom:50px;
           position: absolute;
           right: 25px;
           top: -25px;
@@ -54,9 +55,8 @@ export class FooterBlock extends PolymerElement {
         <div class="fab">
           <paper-fab class="back-to-top" icon="hoverboard:up" on-click="backToTop"></paper-fab>
         </div>
-        <footer-social layout flex flex-auto horizontal wrap></footer-social>
-        <footer-rel></footer-rel>
-        <footer-nav layout horizontal wrap justified center></footer-nav>
+        
+        
       </div>
     `;
   }

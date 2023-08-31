@@ -196,24 +196,7 @@ export class SessionPage extends ReduxMixin(PolymerElement) {
         }
       </style>
 
-      <simple-hero page="schedule">
-        <div class="header-content" layout vertical end-justified>
-          <h2 class="name">[[session.title]]</h2>
-          <div class="tags" hidden$="[[!session.tags.length]]">
-            <template is="dom-repeat" items="[[session.tags]]" as="tag">
-              <span class="tag" style$="color: [[getVariableColor(tag)]]">[[tag]]</span>
-            </template>
-          </div>
-
-          <div class="float-button" hidden$="[[!contentLoaderVisibility]]">
-            <paper-fab
-              icon="hoverboard:[[featuredSessionIcon]]"
-              hidden$="[[!viewport.isLaptopPlus]]"
-              on-click="toggleFeaturedSession"
-            ></paper-fab>
-          </div>
-        </div>
-      </simple-hero>
+      
 
       <paper-progress indeterminate hidden$="[[contentLoaderVisibility]]"></paper-progress>
 

@@ -63,48 +63,6 @@ export class MapBlock extends ReduxMixin(PolymerElement) {
           }
         }
       </style>
-
-      <template is="dom-if" if="[[viewport.isTabletPlus]]">
-        <google-map
-          id="map"
-          latitude="[[location.mapCenter.latitude]]"
-          longitude="[[location.mapCenter.longitude]]"
-          api-key="[[googleMapApiKey]]"
-          zoom="[[location.pointer.zoom]]"
-          disable-default-ui
-          draggable="false"
-          additional-map-options="[[options]]"
-        >
-          <google-map-marker
-            latitude="[[location.pointer.latitude]]"
-            longitude="[[location.pointer.longitude]]"
-            title="[[location.name]]"
-            icon="images/map-marker.svg"
-          ></google-map-marker>
-        </google-map>
-      </template>
-
-      <div class="container" layout vertical end-justified fit$="[[viewport.isTabletPlus]]">
-        <div class="description-card" layout vertical justified>
-          <div>
-            <h2>[[mapBlock.title]]</h2>
-            <p>[[location.description]]</p>
-          </div>
-          <div class="bottom-info" layout horizontal justified center>
-            <span class="address">[[location.address]]</span>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;destination=[[location.address]]"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <paper-icon-button
-                class="directions"
-                icon="hoverboard:directions"
-              ></paper-icon-button>
-            </a>
-          </div>
-        </div>
-      </div>
     `;
   }
 

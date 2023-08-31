@@ -66,46 +66,6 @@ export class PartnersBlock extends ReduxMixin(PolymerElement) {
           }
         }
       </style>
-
-      <div class="container">
-        <h1 class="container-title">[[partnersBlock.title]]</h1>
-
-        <template is="dom-if" if="[[pending]]">
-          <p>[[loading]]</p>
-        </template>
-        <template is="dom-if" if="[[failure]]">
-          <p>Error loading partners.</p>
-        </template>
-
-        <template is="dom-repeat" items="[[partners.data]]" as="block">
-          <h4 class="block-title">[[block.title]]</h4>
-          <div class="logos-wrapper">
-            <template is="dom-repeat" items="[[block.items]]" as="logo">
-              <a
-                class="logo-item"
-                href$="[[logo.url]]"
-                title$="[[logo.name]]"
-                target="_blank"
-                rel="noopener noreferrer"
-                layout
-                horizontal
-                center-center
-              >
-                <lazy-image
-                  class="logo-img"
-                  src="[[logo.logoUrl]]"
-                  alt="[[logo.name]]"
-                ></lazy-image>
-              </a>
-            </template>
-          </div>
-        </template>
-
-        <paper-button class="cta-button animated icon-right" on-click="addPotentialPartner">
-          <span>[[partnersBlock.button]]</span>
-          <iron-icon icon="hoverboard:arrow-right-circle"></iron-icon>
-        </paper-button>
-      </div>
     `;
   }
 
