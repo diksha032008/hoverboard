@@ -26,14 +26,10 @@ class VideoDialog extends ReduxMixin(PolymerElement) {
         }
       </style>
 
-      <mwc-dialog id="dialog" open="[[video.open]]" heading="[[video.title]]">
+      <mwc-dialog id="dialog" open="[[video.open]]">
         <div class="video-wrapper">
-          <lite-youtube
-            video-id="[[video.youtubeId]]"
-            video-title="[[video.title]]"
-            params="autoplay=1"
-            autoload
-          ></lite-youtube>
+        <iframe width="1150" height="550" src="[[video.youtubeId]]" frameborder="0" allowfullscreen></iframe>
+        </iframe>
         </div>
         <mwc-button on-click="closeDialog" slot="primaryAction" dialogAction="close">
           Close

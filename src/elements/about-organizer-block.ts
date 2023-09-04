@@ -52,45 +52,6 @@ export class AboutOrganizerBlock extends ReduxMixin(PolymerElement) {
           margin: 0;
         }
       </style>
-
-      <div class="container" layout horizontal>
-        <div layout horizontal center-center flex hidden$="[[viewport.isPhone]]">
-          <a href="/team" class="image-link">
-            <lazy-image
-              class="organizers-photo"
-              src="[[aboutOrganizerBlock.image]]"
-              alt="Organizer"
-            ></lazy-image>
-          </a>
-        </div>
-
-        <div class="description-block" flex>
-          <template is="dom-repeat" items="[[aboutOrganizerBlock.blocks]]" as="block">
-            <div class="block">
-              <h2>[[block.title]]</h2>
-
-              <short-markdown class="description" content="[[block.description]]"></short-markdown>
-
-              <template is="dom-if" if="[[block.callToAction.newTab]]">
-                <a href="[[block.callToAction.link]]" target="_blank" rel="noopener noreferrer">
-                  <paper-button class="cta-button animated icon-right">
-                    <span>[[block.callToAction.label]]</span>
-                    <iron-icon icon="hoverboard:arrow-right-circle"></iron-icon>
-                  </paper-button>
-                </a>
-              </template>
-              <template is="dom-if" if="[[!block.callToAction.newTab]]">
-                <a href="[[block.callToAction.link]]">
-                  <paper-button class="cta-button animated icon-right">
-                    <span>[[block.callToAction.label]]</span>
-                    <iron-icon icon="hoverboard:arrow-right-circle"></iron-icon>
-                  </paper-button>
-                </a>
-              </template>
-            </div>
-          </template>
-        </div>
-      </div>
     `;
   }
 

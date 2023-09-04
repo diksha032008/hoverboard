@@ -1,15 +1,58 @@
-// TODO: enable imports
-// import '@polymer/iron-icon';
-import { css, html } from 'lit';
+import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { openVideoDialog } from '../store/ui/actions';
 import { aboutBlock } from '../utils/data';
-// TODO: enable imports
-// import '../utils/icons';
 import { ThemedElement } from './themed-element';
+import { openVideoDialog } from '../store/ui/actions';
 
 @customElement('about-block')
 export class AboutBlock extends ThemedElement {
+  private countdownInterval: NodeJS.Timeout | null = null;
+
+  override connectedCallback() {
+    super.connectedCallback();
+
+    // Calculate the time remaining until October 18,2023 (in milliseconds)
+    const targetDate = new Date('2023-10-18T00:00:00Z').getTime();
+    const currentDate = new Date().getTime();
+    const timeRemaining = targetDate - currentDate;
+
+    // Update the countdown timer immediately
+    this.updateCountdownTimer(timeRemaining);
+
+    // Set up an interval to update the countdown timer every second
+    this.countdownInterval = setInterval(() => {
+      const updatedTimeRemaining = targetDate - new Date().getTime();
+      this.updateCountdownTimer(updatedTimeRemaining);
+    }, 1000);
+  }
+
+  override disconnectedCallback() {
+    super.disconnectedCallback();
+    const countdownTimer = this.shadowRoot?.getElementById('countdown-timer');
+
+
+    // Clear the countdown interval when the component is disconnected
+    if (this.countdownInterval) {
+      clearInterval(this.countdownInterval);
+    }
+  }
+
+  private updateCountdownTimer(timeRemaining: number) {
+    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+    const countdownTimer = this.shadowRoot?.getElementById('countdown-timer');
+
+    if (countdownTimer) {
+      countdownTimer.innerHTML = `
+        <h1 class="countdown-title">Countdown To The Most Awaited Event Of The Year</h1>
+        <p class = "countdown-time">${days} days ${hours} hours ${minutes} minutes ${seconds} seconds</p>
+      `;
+    }
+  }
+
   static override get styles() {
     return [
       ...super.styles,
@@ -65,41 +108,19 @@ export class AboutBlock extends ThemedElement {
   override render() {
     return html`
       <div class="container">
+        <!-- Your existing content here -->
         <div>
           <h1 class="container-title">${aboutBlock.title}</h1>
           <p>${aboutBlock.callToAction.featuredSessions.description}</p>
         </div>
 
-        <div class="statistics-block">
-          <div class="item">
-            <div class="numbers">${aboutBlock.statisticsBlock.attendees.number}</div>
-            <div class="label">${aboutBlock.statisticsBlock.attendees.label}</div>
-          </div>
-
-          <div class="item">
-            <div class="numbers">${aboutBlock.statisticsBlock.days.number}</div>
-            <div class="label">${aboutBlock.statisticsBlock.days.label}</div>
-          </div>
-
-          <div class="item">
-            <div class="numbers">${aboutBlock.statisticsBlock.sessions.number}</div>
-            <div class="label">${aboutBlock.statisticsBlock.sessions.label}</div>
-          </div>
-
-          <div class="item">
-            <div class="numbers">${aboutBlock.statisticsBlock.tracks.number}</div>
-            <div class="label">${aboutBlock.statisticsBlock.tracks.label}</div>
-          </div>
-        </div>
+        <!-- Countdown timer -->
+   
+        
+        <div id="countdown-timer"></div>
+   
       </div>
     `;
-  }
-
-  private playVideo() {
-    openVideoDialog({
-      title: aboutBlock.callToAction.howItWas.label,
-      youtubeId: aboutBlock.callToAction.howItWas.youtubeId,
-    });
   }
 }
 

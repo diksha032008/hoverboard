@@ -137,7 +137,7 @@
       "featuredSessions": {
         "description": "Tech Summit 2023 is coming to Gurgaon on 18-19 October 2023. The mega fest of technology, bringing together the tech community for hands-on learning experiences and community building. The theme for this year’s summit is #OneByteAtAtime, a Hyper-Local event that seeks to inspire innovation, foster collaboration, and provide local networking and knowledge exchange.",
         
-        "link": "https://www.youtube.com/playlist?list=PLt8lEzcLNl31AouwDkbLbLARlQFwNS2en"
+        "link": ""
       },
       "howItWas": {
         "description": "Described by many as 'Google I/O of Ukraine', our team creates DevFest to be the best place for experience sharing in a phenomenal atmosphere.",
@@ -183,7 +183,7 @@
     "toast": "We will contact you soon!"
   },
   "featuredVideos": {
-    "title": "Tech Summit 2022 Featured Videos",
+    "title": "Reflecting on the Past: Embracing the Vibes of Recent Years",
     "callToAction": {
       "label": "See all videos",
       "link": "https://www.youtube.com/playlist?list=PLt8lEzcLNl31AouwDkbLbLARlQFwNS2en"
@@ -224,7 +224,7 @@
     "description": "Last year's techsummit built with lots of excitement. Check out photos from featured talks, hands-on learning sessions, and after-hours fun.",
     "callToAction": {
       "label": "See all photos",
-      "link": "https://goo.gl/photos/H8s3CtPexCzkLqSt9"
+      "link": "https://adidasgroup-my.sharepoint.com/personal/vandana_gupta_adidas_com/_layouts/15/onedrive.aspx?ct=1693487201103&or=Teams%2DHL&ga=1&LOF=1&id=%2Fpersonal%2Fvandana%5Fgupta%5Fadidas%5Fcom%2FDocuments%2FTECH%20SUMMIT%20PHOTOS%2FDay%203"
     }
   },
   "mapBlock": {
@@ -233,13 +233,13 @@
   "subscribeBlock": {
     "callToAction": {
       "description": "Get notified about the important Tech Summit updates",
-      "label": "Subscribe"
+      "label": "Notify Me"
     },
     "yourEmail": "Your email",
     "emailAddress": "Email Address",
     "firstName": "First Name",
     "lastName": "Last Name",
-    "formTitle": "Get the latest updates, insights and news about GDG DevFest Ukraine sent to your inbox.",
+    "formTitle": "Get the latest updates about adidas Tech Summit 2023.",
     "emailRequired": "Please enter a valid email address.",
     "fieldRequired": "Field required.",
     "subscribe": "Subscribe",

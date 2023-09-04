@@ -133,6 +133,7 @@ export class HoverboardApp extends PolymerElement {
 
         // Look for copies of this
         .bottom-drawer-link {
+          margin-bottom: 10px;
           padding: 16px 24px;
           cursor: pointer;
         }
@@ -143,18 +144,31 @@ export class HoverboardApp extends PolymerElement {
             height: initial;
           }
         }
-      </style>
 
+        .logo-title{
+          display: flex;
+          flex-direction: row;
+        }
+
+        .tech-summit-title{
+          padding-left: 3rem;
+          padding-top: 0.5rem;
+        }
+      </style>
       <app-drawer-layout drawer-width="300px" force-narrow fullbleed>
         <app-drawer id="drawer" slot="drawer" opened="{{drawerOpened}}" swipe-open>
           <app-toolbar layout vertical start>
-            <lazy-image
-              class="toolbar-logo"
-              src="/images/logo-monochrome.svg"
-              alt="[[alt]]"
-            ></lazy-image>
+            <div class='logo-title'>
+              <div>
+                <lazy-image
+                  class="toolbar-logo"
+                  src="/images/techsummit.png"
+                  alt="[[alt]]"
+                ></lazy-image>
+              </div>
+              <h5 class='tech-summit-title'>Tech Summit 2023</h5>
+            </div>
             <h2 class="dates">[[dates]]</h2>
-            <h3 class="location">[[shortLocation]]</h3>
           </app-toolbar>
 
           <div class="drawer-content" layout vertical justified flex>
@@ -175,19 +189,7 @@ export class HoverboardApp extends PolymerElement {
             <div>
               <app-install></app-install>
 
-              <a
-                class="bottom-drawer-link"
-                href$="[[ticketUrl]]"
-                target="_blank"
-                rel="noopener noreferrer"
-                on-click="closeDrawer"
-                layout
-                horizontal
-                center
-              >
-                <span>[[buyTicket]]</span>
-                <iron-icon icon="hoverboard:open-in-new"></iron-icon>
-              </a>
+             
             </div>
           </div>
         </app-drawer>

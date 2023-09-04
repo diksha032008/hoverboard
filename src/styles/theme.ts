@@ -180,6 +180,28 @@ export const theme = css`
     line-height: 30px;
   }
 
+  .countdown-title {
+    text-align: center;
+    color: var(--default-primary-color);
+    margin-bottom: 24px;
+    padding: 0;
+    font-size: 40px;
+    line-height: 35px;
+    flex-wrap: wrap;
+  }
+
+  .countdown-time {
+    text-align: center;
+    color: white;
+    margin-top: 50px
+    margin-bottom: 50px;
+    padding: 10;
+    font-size: 35px;
+    line-height: 35px;
+    flex-wrap: wrap;
+    background: var(--default-primary-color);
+  }
+
   .big-icon {
     --iron-icon-height: 48px;
     --iron-icon-width: 48px;
