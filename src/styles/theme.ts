@@ -1,24 +1,7 @@
 import { css } from 'lit';
 
-// Define the font-face rule to import AdihausDIN
-const adihausDINFont = css`
-  @font-face {
-    @font-face {
-      font-family: 'AdihausDIN';
-      src: url('font/AdihausDIN-Regular.woff') format('woff'),
-      src: url('font/AdihausDIN-Bold.woff') format('woff'),
-      src: url('font/AdihausDIN-Cond.woff') format('woff'),
-      src: url('font/AdihausDIN-CondBold.woff') format('woff'),
-      src: url('font/AdihausDIN-CondBoldItalic.woff') format('woff'),
-      src: url('font/AdihausDIN-CondIta.woff') format('woff'),
-      src: url('font/AdihausDIN-CondMediIta.woff') format('woff'),
-      src: url('font/AdihausDIN-CondMedium.woff') format('woff');      
-    
-    }
-`;
 
 export const theme = css`
-  ${adihausDINFont}
   :host {
     --dark-primary-color: #0098cf;
     --default-primary-color: #00b0f0;
@@ -52,7 +35,8 @@ export const theme = css`
       0 3px 4px 0 rgb(18 185 246 / 30%), 0 1px 8px 0 rgb(18 185 246 / 30%);
     --box-shadow-primary-color-hover: 0 1px 3px -2px rgb(18 185 246 / 30%),
       0 4px 5px 0 rgb(18 185 246 / 30%), 0 2px 9px 0 rgb(18 185 246 / 30%);
-    --font-family:  'AdihausDIN';
+    --font-family: -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, helvetica, arial,
+      sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     --max-container-width: 1280px;
     --primary-color-transparent: rgb(18 185 246 / 10%);
     --primary-color-light: rgb(18 185 246 / 80%);
