@@ -1,11 +1,29 @@
 import { css } from 'lit';
 
+// Define the font-face rule to import AdihausDIN
+const adihausDINFont = css`
+  @font-face {
+    @font-face {
+      font-family: 'AdihausDIN';
+      src: url('font/AdihausDIN-Regular.woff') format('woff'),
+      src: url('font/AdihausDIN-Bold.woff') format('woff'),
+      src: url('font/AdihausDIN-Cond.woff') format('woff'),
+      src: url('font/AdihausDIN-CondBold.woff') format('woff'),
+      src: url('font/AdihausDIN-CondBoldItalic.woff') format('woff'),
+      src: url('font/AdihausDIN-CondIta.woff') format('woff'),
+      src: url('font/AdihausDIN-CondMediIta.woff') format('woff'),
+      src: url('font/AdihausDIN-CondMedium.woff') format('woff');      
+    
+    }
+`;
+
 export const theme = css`
+  ${adihausDINFont}
   :host {
     --dark-primary-color: #0098cf;
     --default-primary-color: #00b0f0;
     --focused-color: #029ad2;
-    --light-primary-color: #d1c4e9;
+    --light-primary-color: #00b0f0;
     --text-primary-color: #fff;
     --accent-color: #ff5252;
     --primary-background-color: #fff;
@@ -13,10 +31,10 @@ export const theme = css`
     --secondary-text-color: #757575;
     --disabled-text-color: #bdbdbd;
     --divider-color: #ededed;
-    --footer-background-color: #f5f5f5;
+    --footer-background-color: #00b0f0;
     --footer-text-color: #616161;
     --twitter-color: #4099ff;
-    --facebook-color: #3b5998;
+    --facebook-color: #00b0f0;
     --border-light-color: #e2e2e2;
     --error-color: #e64a19;
 
@@ -30,14 +48,13 @@ export const theme = css`
     --border-radius: 4px;
     --box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
       0 1px 3px 0 rgb(0 0 0 / 12%);
-    --box-shadow-primary-color: 0 3px 3px -2px rgb(103 58 183 / 30%),
-      0 3px 4px 0 rgb(103 58 183 / 30%), 0 1px 8px 0 rgb(103 58 183 / 30%);
-    --box-shadow-primary-color-hover: 0 1px 3px -2px rgb(103 58 183 / 40%),
-      0 4px 5px 0 rgb(103 58 183 / 40%), 0 2px 9px 0 rgb(103 58 183 / 40%);
-    --font-family: -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, helvetica, arial,
-      sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    --box-shadow-primary-color: 0 3px 3px -2px rgb(18 185 246 / 30%),
+      0 3px 4px 0 rgb(18 185 246 / 30%), 0 1px 8px 0 rgb(18 185 246 / 30%);
+    --box-shadow-primary-color-hover: 0 1px 3px -2px rgb(18 185 246 / 30%),
+      0 4px 5px 0 rgb(18 185 246 / 30%), 0 2px 9px 0 rgb(18 185 246 / 30%);
+    --font-family:  'AdihausDIN';
     --max-container-width: 1280px;
-    --primary-color-transparent: rgb(103 58 183 / 10%);
+    --primary-color-transparent: rgb(18 185 246 / 10%);
     --primary-color-light: rgb(18 185 246 / 80%);
     --primary-color-white: #ede7f6;
 
@@ -50,7 +67,7 @@ export const theme = css`
     --general: #9e9e9e;
     --android: #78c257;
     --web: #2196f3;
-    --cloud: #3f51b5;
+    --cloud: #00b0f0;
     --community: #e91e63;
     --design: #e91e63;
   }

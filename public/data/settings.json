@@ -8,14 +8,14 @@
   "startDate": "2017-10-013T09:00:00+03:00",
   "endDate": "2017-10-14T19:00:00+03:00",
   "webapp": {
-    "shortName": "DevFest",
-    "themeColor": "#673AB7",
-    "backgroundColor": "#673AB7"
+    "shortName": "Tech Summit 2023",
+    "themeColor": "#00b0f0",
+    "backgroundColor": "#00b0f0"
   },
   "dateFormat": {
     "locale": "en-US"
   },
-  "hashtag": "DevFest",
+  "hashtag": "Tech Summit 2023",
   "disabledSchedule": false,
   "navigation": [
     {
@@ -32,23 +32,13 @@
       "route": "schedule",
       "permalink": "/schedule",
       "label": "Schedule"
-    },
-    {
-      "route": "team",
-      "permalink": "/team",
-      "label": "Team"
-    },
-    {
-      "route": "blog",
-      "permalink": "/blog",
-      "label": "Blog"
     }
   ],
   "heroSettings": {
     "home": {
       "description": "Join the commuity, learn new things!",
       "background": {
-        "color": "#673ab7",
+        "color": "#00b0f0",
         "image": "/images/backgrounds/home.jpg"
       },
       "fontColor": "#FFF"
@@ -144,15 +134,15 @@
       },
       {
         "name": "facebook",
-        "url": "https://www.facebook.com/devfest.ukraine/"
+        "url": "https://www.facebook.com/Tech Summit 2023.ukraine/"
       },
       {
         "name": "twitter",
-        "url": "https://twitter.com/devfest_ukraine/"
+        "url": "https://twitter.com/Tech Summit 2023_ukraine/"
       },
       {
         "name": "instagram",
-        "url": "https://www.instagram.com/devfestukraine"
+        "url": "https://www.instagram.com/Tech Summit 2023ukraine"
       },
       {
         "name": "youtube",
@@ -170,7 +160,7 @@
       }
     ]
   },
-  "mailto": "devfest@gdg.org.ua",
+  "mailto": "Tech Summit 2023@gdg.org.ua",
   "signInProviders": {
     "providersData": [
       {

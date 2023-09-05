@@ -22,7 +22,7 @@
 
     <link href="{{ url }}" rel="canonical" />
 
-    <link href="images/favicon.ico" rel="icon" />
+    <link href="images/icon.ico" rel="icon" />
 
     <meta content="{{ webapp.themeColor }}" name="theme-color" />
     <link href="manifest.json" rel="manifest" />
@@ -109,11 +109,22 @@
         min-height: 100%;
         height: 100%;
       }
+      @font-face {
+        font-family: 'AdihausDIN';
+        src: url('font/AdihausDIN-Regular.woff') format('woff');
+        src: url('font/AdihausDIN-Bold.woff') format('woff');
+        src: url('font/AdihausDIN-Cond.woff') format('woff');
+        src: url('font/AdihausDIN-CondBold.woff') format('woff');
+        src: url('font/AdihausDIN-CondBoldItalic.woff') format('woff');
+        src: url('font/AdihausDIN-CondIta.woff') format('woff');
+        src: url('font/AdihausDIN-CondMediIta.woff') format('woff');
+        src: url('font/AdihausDIN-CondMedium.woff') format('woff');      
+      
+      }
 
       body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
-          sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+        font-family: AdihausDIN;
         font-size: 16px;
         line-height: 1.5;
       }

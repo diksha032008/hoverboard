@@ -42,7 +42,7 @@ Color and images for header can be configured via `data/settings.json` in `heroS
   "home": {
     "description": "Join the commuity, learn new things!",
     "background": {
-      "color": "#673ab7",
+      "color": "#00b0f0",
       "image": "/images/backgrounds/home.jpg"
     },
     "fontColor": "#FFF"
@@ -65,7 +65,7 @@ Edit Web app colors via `webapp` in `data/settings.json`
 
 ```json
 "webapp": {
-  "shortName": "DevFest",
+  "shortName": "Tech Summit 2023",
   "themeColor": "#F57C00",
   "backgroundColor": "#F57C00"
 }

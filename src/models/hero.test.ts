@@ -6,7 +6,7 @@ describe('hero', () => {
     const heros: Hero[] = [
       {
         backgroundColor: '/images/backgrounds/home.jpg',
-        backgroundImage: '#673ab7',
+        backgroundImage: '#00b0f0',
         fontColor: '#fff',
         hideLogo: true,
       },
