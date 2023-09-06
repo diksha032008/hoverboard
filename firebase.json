@@ -67,13 +67,13 @@
     },
     "ui": {
       "enabled": true,
-      "port": 9001
+      "port": 9090
     },
     "auth": {
       "port": 9099
     },
     "database": {
-      "port": 9009
+      "port": 9990
     },
     "storage": {
       "port": 9199

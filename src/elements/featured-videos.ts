@@ -49,7 +49,7 @@ export class FeaturedVideos extends ReduxMixin(PolymerElement) {
         }
 
         .video-item {
-          width: 300px;
+          width:100%;
         }
 
         .video-item:not(:last-of-type) {
@@ -106,7 +106,7 @@ export class FeaturedVideos extends ReduxMixin(PolymerElement) {
           }
 
           .video-item {
-            width: calc(var(--max-container-width) / 3 - 16px);
+           
             cursor: pointer;
           }
 
@@ -134,6 +134,10 @@ export class FeaturedVideos extends ReduxMixin(PolymerElement) {
             right: 0;
           }
         }
+        .video-player{
+          max-height:200px;
+          
+        }
       </style>
       <div class="container">
         <div class="header" layout horizontal justified center wrap>
@@ -158,33 +162,15 @@ export class FeaturedVideos extends ReduxMixin(PolymerElement) {
               </template>
 
               <template is="dom-repeat" items="[[videos.data]]" as="block" index-as="index">
-                <div class="video-item" on-click="playVideo" video="[[block]]">
-                  <div class="thumbnail" relative layout horizontal center-center>
-                    <lazy-image
-                      id="image[[index]]"
-                      class="thumbnail-image"
-                      src="[[block.thumbnail]]"
-                      alt="[[block.title]]"
-                    ></lazy-image>
-                    <div class="image-overlay" fit></div>
-                    <paper-icon-button
-                      class="video-play-icon"
-                      icon="hoverboard:play"
-                    ></paper-icon-button>
-                  </div>
+                <div class="video-item"  video="[[block]]">
+                <video controls="" autoplay="" class="video-player" name="media" poster="[[block.thumbnail]]">
+                <source src="[[block.youtubeId]]" type="video/mp4"></video>
                   <h4 class="video-title">[[block.title]]</h4>
                 </div>
               </template>
             </div>
           </div>
-          <paper-icon-button
-            class="next-video slide-icon"
-            icon="hoverboard:chevron-right"
-            on-click="shiftContentRight"
-            hidden$="[[rightArrowHidden]]"
-          >
-            &gt;</paper-icon-button
-          >
+         
         </div>
       </div>
     `;
