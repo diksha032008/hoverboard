@@ -81,6 +81,14 @@ export class GalleryBlock extends ReduxMixin(PolymerElement) {
           color: var(--text-primary-color);
         }
 
+        @media(max-width: 480px){
+          .photos-grid {
+            height: calc(100vh - 64px);
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+          }
+        }
+
         @media (min-width: 640px) {
           .photos-grid {
             height: calc(100vh - 64px);
