@@ -1,7 +1,18 @@
 import { css } from 'lit';
 
+// Define the font-face rule to import AdihausDIN
+const adihausDINFont = css`
+  @font-face {
+      font-family: 'AdihausDIN';
+      src: url('font/AdihausDIN-Regular.woff2') format('woff2'),
+          url('font/adineuePRO-Bold (1).woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+`;
 
 export const theme = css`
+  ${adihausDINFont}
   :host {
     --dark-primary-color: #0098cf;
     --default-primary-color: #00b0f0;
@@ -35,8 +46,7 @@ export const theme = css`
       0 3px 4px 0 rgb(18 185 246 / 30%), 0 1px 8px 0 rgb(18 185 246 / 30%);
     --box-shadow-primary-color-hover: 0 1px 3px -2px rgb(18 185 246 / 30%),
       0 4px 5px 0 rgb(18 185 246 / 30%), 0 2px 9px 0 rgb(18 185 246 / 30%);
-    --font-family: -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, helvetica, arial,
-      sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    --font-family: 'AdihausDIN', Arial, sans-serif;
     --max-container-width: 1280px;
     --primary-color-transparent: rgb(18 185 246 / 10%);
     --primary-color-light: rgb(18 185 246 / 80%);
@@ -65,7 +75,7 @@ export const theme = css`
   }
 
   body {
-    font-family: var(--font-family);
+    font-family: 'AdihausDIN',var(--font-family);
     text-rendering: optimizelegibility;
     color: var(--primary-text-color);
   }
