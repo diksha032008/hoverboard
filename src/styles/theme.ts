@@ -11,8 +11,19 @@ const adihausDINFont = css`
     }
 `;
 
+const adineueProCondFont = css`
+  @font-face {
+      font-family: 'adineueProCond';
+      src: url('font/adineuePRO-Bold (1).woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+    }
+`;
+
+
 export const theme = css`
   ${adihausDINFont}
+  ${adineueProCondFont}
   :host {
     --dark-primary-color: #0098cf;
     --default-primary-color: #00b0f0;
@@ -87,7 +98,8 @@ export const theme = css`
   h5,
   h6 {
     margin: 0;
-    font-weight: normal;
+    font-weight: bold;
+    font-family:'adineueProCond',Arial, sans-serif;
   }
 
   h1 {
