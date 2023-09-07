@@ -13,7 +13,7 @@ export class FooterBlock extends PolymerElement {
     return html`
       <style include="shared-styles flex flex-alignment positioning">
         :host {
-          margin-top: 40px;
+          margin-top: 20px;
           display: block;
           position: relative;
           color: var(--footer-text-color);
@@ -26,6 +26,7 @@ export class FooterBlock extends PolymerElement {
           margin: 0 auto;
           padding: 20px 0;
           position: relative;
+          height: 40px;
         }
 
         .fab paper-fab {
@@ -49,12 +50,21 @@ export class FooterBlock extends PolymerElement {
             padding: 15px 36px;
           }
         }
+        .copyright{
+          color:white;
+          font-weight:500;
+          text-align:center;
+          margin-top: -10px;
+        }
       </style>
 
       <div class="container">
-        <div class="fab">
-          <paper-fab class="back-to-top" icon="hoverboard:up" on-click="backToTop"></paper-fab>
-        </div>
+  <p class="copyright" >&#169; adidas 2023</p>
+  <div class="fab">
+    <paper-fab class="back-to-top" icon="hoverboard:up" on-click="backToTop"></paper-fab>
+  </div>
+</div>
+
         
         
       </div>

@@ -47,8 +47,8 @@ export class AboutBlock extends ThemedElement {
 
     if (countdownTimer) {
       countdownTimer.innerHTML = `
-        <h1 class="countdown-title">Countdown To The Most Awaited Event Of The Year</h1>
-        <p class = "countdown-time">${days} days ${hours} hours ${minutes} minutes ${seconds} seconds</p>
+        <h1 class="countdown-title" style="text-align:left;">Countdown To The Most Awaited Event Of The Year</h1>
+        <h2 class = "countdown-time">${days} days ${hours} hours ${minutes} minutes ${seconds} seconds</h2>
       `;
     }
   }
@@ -87,10 +87,11 @@ export class AboutBlock extends ThemedElement {
           margin-top: 4px;
         }
 
-        @media (min-width: 640px) {
+        @media (max-width: 640px) {
           .content {
-            grid-gap: 64px;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            display:block;
+            height:auto;
+            text-align:left;
           }
 
           .statistics-block {
@@ -100,7 +101,23 @@ export class AboutBlock extends ThemedElement {
           .numbers {
             font-size: 56px;
           }
+          .countdown-time{
+            
+            height:100px;
+            padding-top:40px;
+            text-align:center;
+          }
         }
+
+        .countdown-time{
+        height:300px;
+            padding-top:120px;
+            text-align:center;
+        }
+          
+
+
+
       `,
     ];
   }

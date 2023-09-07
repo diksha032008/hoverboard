@@ -2,7 +2,7 @@ import { firestore } from '../firebase-config';
 import data from '../../docs/default-firebase-data.json';
 
 export const importBlog = () => {
-  const blog: { [key: string]: object } = data.blog;
+  const blog: { [key: string]: object } = {};
   if (!Object.keys(blog).length) {
     return Promise.resolve();
   }

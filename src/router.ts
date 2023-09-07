@@ -127,20 +127,6 @@ const ROUTES: Route[] = [
   {
     path: '/previous-speakers',
     children: [
-      {
-        path: '',
-        component: 'previous-speakers-page',
-        action: async () => {
-          await import('./pages/previous-speakers-page.js');
-        },
-      },
-      {
-        path: '/:id',
-        component: 'previous-speaker-page',
-        action: async () => {
-          await import('./pages/previous-speaker-page.js');
-        },
-      },
     ],
   },
   {

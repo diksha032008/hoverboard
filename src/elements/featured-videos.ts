@@ -163,7 +163,7 @@ export class FeaturedVideos extends ReduxMixin(PolymerElement) {
 
               <template is="dom-repeat" items="[[videos.data]]" as="block" index-as="index">
                 <div class="video-item"  video="[[block]]">
-                <video controls="" autoplay="" class="video-player" name="media" poster="[[block.thumbnail]]">
+                <video controls="" class="video-player" name="media" poster="[[block.thumbnail]]">
                 <source src="[[block.youtubeId]]" type="video/mp4"></video>
                   <h4 class="video-title">[[block.title]]</h4>
                 </div>

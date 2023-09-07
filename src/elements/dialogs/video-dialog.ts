@@ -25,16 +25,6 @@ class VideoDialog extends ReduxMixin(PolymerElement) {
           }
         }
       </style>
-
-      <mwc-dialog id="dialog" open="[[video.open]]">
-        <div class="video-wrapper">
-        <iframe width="1150" height="550" src="[[video.youtubeId]]" frameborder="0" allowfullscreen></iframe>
-        </iframe>
-        </div>
-        <mwc-button on-click="closeDialog" slot="primaryAction" dialogAction="close">
-          Close
-        </mwc-button>
-      </mwc-dialog>
     `;
   }
 

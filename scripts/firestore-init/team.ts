@@ -2,7 +2,7 @@ import { firestore } from '../firebase-config';
 import data from '../../docs/default-firebase-data.json';
 
 export const importTeam = () => {
-  const teams = data.team;
+  const teams = {};
   if (!Object.keys(teams).length) {
     return Promise.resolve();
   }
@@ -11,18 +11,13 @@ export const importTeam = () => {
   const batch = firestore.batch();
 
   Object.keys(teams).forEach((teamId) => {
-    const team = teams[Number(teamId)];
+    const team ={};
     if (team) {
       batch.set(firestore.collection('team').doc(teamId), {
-        title: team.title,
+        title: "",
       });
 
-      team.members.forEach((member, id) => {
-        batch.set(
-          firestore.collection('team').doc(`${teamId}`).collection('members').doc(`${id}`),
-          member
-        );
-      });
+
     } else {
       console.warn(`Skipping missing team ${teamId}`);
     }

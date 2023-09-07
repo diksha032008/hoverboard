@@ -2,7 +2,7 @@ import { firestore } from '../firebase-config';
 import data from '../../docs/default-firebase-data.json';
 
 export const importPartners = () => {
-  const partners = data.partners;
+  const partners = {};
   if (!Object.keys(partners).length) {
     return Promise.resolve();
   }
@@ -11,22 +11,11 @@ export const importPartners = () => {
   const batch = firestore.batch();
 
   Object.keys(partners).forEach((partnerId) => {
-    const partner = partners[Number(partnerId)];
+    const partner = {};
     if (partner) {
       batch.set(firestore.collection('partners').doc(partnerId), {
-        title: partner.title,
-        order: partner.order,
-      });
-
-      partner.items.forEach((item, id) => {
-        batch.set(
-          firestore
-            .collection('partners')
-            .doc(`${partnerId}`)
-            .collection('items')
-            .doc(`${id}`.padStart(3, '0')),
-          item
-        );
+        title: "",
+        order:"",
       });
     } else {
       console.warn(`Missing partner ${partnerId}`);

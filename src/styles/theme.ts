@@ -14,7 +14,7 @@ const adihausDINFont = css`
 const adineueProCondFont = css`
   @font-face {
       font-family: 'adineueProCond';
-      src: url('font/adineuePRO-Bold (1).woff2') format('woff2');
+      src: url('font/adineuePRO-Bold.woff2') format('woff2');
       font-weight: normal;
       font-style: normal;
     }
