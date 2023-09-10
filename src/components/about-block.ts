@@ -47,8 +47,8 @@ export class AboutBlock extends ThemedElement {
 
     if (countdownTimer) {
       countdownTimer.innerHTML = `
-        <h1 class="countdown-title" style="text-align:left;">Countdown To The Most Awaited Event Of The Year</h1>
-        <h2 class = "countdown-time">${days} days ${hours} hours ${minutes} minutes ${seconds} seconds</h2>
+      <h1 class="countdown-title" style="text-align:center; font-weight:bolder;">Countdown To The Most Awaited Event Of The Year</h1>
+      <h2 class = "countdown-time">${days} days ${hours} hours ${minutes} minutes ${seconds} seconds</h2>
       `;
     }
   }
@@ -127,7 +127,7 @@ export class AboutBlock extends ThemedElement {
       <div class="container">
         <!-- Your existing content here -->
         <div>
-          <h1 class="container-title">${aboutBlock.title}</h1>
+         
           <p>${aboutBlock.callToAction.featuredSessions.description}</p>
         </div>
 

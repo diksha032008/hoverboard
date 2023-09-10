@@ -2,7 +2,7 @@
 
 import express from 'express';
 import { getFirestore } from 'firebase-admin/firestore';
-import * as functions from 'firebase-functions';
+import { onRequest } from 'firebase-functions/v2/https';
 import fetch from 'node-fetch';
 import url, { URL } from 'url';
 
@@ -89,4 +89,4 @@ app.get('*', async (req, res) => {
   }
 });
 
-export const prerender = functions.https.onRequest(app);
+export const prerender = onRequest(app);

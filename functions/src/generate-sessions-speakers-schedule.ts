@@ -1,7 +1,8 @@
 // https://github.com/import-js/eslint-plugin-import/issues/1810
 // eslint-disable-next-line import/no-unresolved
 import { getFirestore } from 'firebase-admin/firestore';
-import * as functions from 'firebase-functions';
+import { onDocumentWritten } from 'firebase-functions/v2/firestore';
+import { logger } from 'firebase-functions/v2';
 import { sessionsSpeakersMap } from './schedule-generator/speakers-sessions-map.js';
 import { sessionsSpeakersScheduleMap } from './schedule-generator/speakers-sessions-schedule-map.js';
 import { isEmpty, ScheduleMap, SessionMap, snapshotToObject, SpeakerMap } from './utils.js';
@@ -12,31 +13,25 @@ const isScheduleEnabled = async (): Promise<boolean> => {
   if (doc.exists) {
     return doc.data().enabled === 'true' || doc.data().enabled === true;
   } else {
-    functions.logger.error(
+    logger.error(
       'Schedule config is not set. Set the `config/schedule.enabled=true` Firestore value.'
     );
     return false;
   }
 };
 
-export const sessionsWrite = functions.firestore
-  .document('sessions/{sessionId}')
-  .onWrite(() => generateAndSaveData());
+export const sessionsWrite = onDocumentWritten ('sessions/{sessionId}', () => generateAndSaveData());
 
-export const scheduleWrite = functions.firestore
-  .document('schedule/{scheduleId}')
-  .onWrite(async () => {
+export const scheduleWrite = onDocumentWritten('schedule/{scheduleId}', async () => {
     if (await isScheduleEnabled()) {
       return generateAndSaveData();
     }
     return null;
   });
 
-export const speakersWrite = functions.firestore
-  .document('speakers/{speakerId}')
-  .onWrite(async (change, context) => {
-    const changedSpeaker = change.after.exists
-      ? { id: context.params.speakerId, ...change.after.data() }
+export const speakersWrite = onDocumentWritten('speakers/{speakerId}', async (change) => {
+    const changedSpeaker = change.data.after.exists
+      ? { id: change.params.speakerId, ...change.data.after.data() }
       : null;
     return generateAndSaveData(changedSpeaker);
   });
@@ -81,7 +76,7 @@ async function generateAndSaveData(changedSpeaker?) {
 
 function saveGeneratedData(data: SessionMap | SpeakerMap | ScheduleMap, collectionName: string) {
   if (isEmpty(data)) {
-    functions.logger.error(
+    logger.error(
       `Attempting to write empty data to Firestore collection: "${collectionName}".`
     );
     return;

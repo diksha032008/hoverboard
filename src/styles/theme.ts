@@ -27,6 +27,7 @@ export const theme = css`
   :host {
     --dark-primary-color: #0098cf;
     --default-primary-color: #00b0f0;
+    --dark-color: #000000;
     --focused-color: #029ad2;
     --light-primary-color: #00b0f0;
     --text-primary-color: #fff;
@@ -201,14 +202,14 @@ export const theme = css`
     padding: 0;
     font-size: 32px;
     line-height: 30px;
-  }
+  }ote
 
   .countdown-title {
     text-align: center;
-    color: var(--default-primary-color);
+    color: var(--dark-color);
     margin-bottom: 24px;
     padding: 0;
-    font-size: 40px;
+    font-size: 30px;
     line-height: 35px;
     flex-wrap: wrap;
   }
@@ -222,7 +223,10 @@ export const theme = css`
     font-size: 35px;
     line-height: 35px;
     flex-wrap: wrap;
-    background: var(--default-primary-color);
+    background-image: url('/images/backgrounds/timerBG.png');
+    background-size: cover;
+    background-position: center bottom;   
+    padding-bottom: 20px;
   }
 
   .big-icon {

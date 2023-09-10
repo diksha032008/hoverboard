@@ -125,30 +125,11 @@ const ROUTES: Route[] = [
     ],
   },
   {
-    path: '/previous-speakers',
-    children: [
-    ],
-  },
-  {
-    path: '/team',
-    component: 'team-page',
-    action: async () => {
-      await import('./pages/team-page.js');
-    },
-  },
-  {
-    path: '/faq',
-    component: 'faq-page',
-    action: async () => {
-      await import('./pages/faq-page.js');
-    },
-  },
-  {
-    path: '/coc',
-    component: 'coc-page',
-    action: async () => {
-      await import('./pages/coc-page.js');
-    },
+    path:'/trending',
+    component:'trending-page',
+    action: async ()=>{
+      await import('./pages/trending-page.js')
+    }
   },
   {
     path: '(.*)',
@@ -156,7 +137,7 @@ const ROUTES: Route[] = [
     action: async () => {
       await import('./pages/not-found-page.js');
     },
-  },
+  }
 ];
 
 export const startRouter = (outlet: HTMLElement) => {

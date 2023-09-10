@@ -36,6 +36,11 @@ import { acceptingFeedback } from '../utils/feedback';
 import '../utils/icons';
 import { updateImageMetadata } from '../utils/metadata';
 import { getVariableColor } from '../utils/styles';
+import { db } from '../firebase';
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
+import { type } from 'os';
+
+
 
 @customElement('session-page')
 export class SessionPage extends ReduxMixin(PolymerElement) {
@@ -194,9 +199,72 @@ export class SessionPage extends ReduxMixin(PolymerElement) {
           --paper-progress-active-color: var(--default-primary-color);
           --paper-progress-secondary-color: var(--default-primary-color);
         }
+
+        .feedback-box{
+          width: 80%;
+          margin:20px 0;
+         
+         
+      }
+  
+      .feedback-item{
+          width: 90%;
+          padding: 12px;
+          border-radius: 10px;
+          border-bottom: 2px solid gray;
+      }
+  
+      .feedback-username{
+          font-weight: 700;
+          font-size: 105%;
+      }
+  
+      .feedback-rating{
+          display: flex;
+          align-items: center;
+          margin-bottom: -4px;
+      }
+      .star{
+          color: red;
+          font-size: 110%;
+      }
+      .rating-title{
+          font-size: 100%;
+          font-weight: 500;
+          margin-right: 12px;
+      }
+  
+  .feedback-content{
+      font-size: 105%;
+      font-weight: 400;
+      padding-top: 8px;
+  }
+
+  .session-review-title{
+    text-align: center;
+    font-size: 200%;
+    font-weight: bold;
+  }
       </style>
 
-      
+      <simple-hero page="schedule">
+        <div class="header-content" layout vertical end-justified>
+          <h2 class="name">[[session.title]]</h2>
+          <div class="tags" hidden$="[[!session.tags.length]]">
+            <template is="dom-repeat" items="[[session.tags]]" as="tag">
+              <span class="tag" style$="color: [[getVariableColor(tag)]]">[[tag]]</span>
+            </template>
+          </div>
+
+          <div class="float-button" hidden$="[[!contentLoaderVisibility]]">
+            <paper-fab
+              icon="hoverboard:[[featuredSessionIcon]]"
+              hidden$="[[!viewport.isLaptopPlus]]"
+              on-click="toggleFeaturedSession"
+            ></paper-fab>
+          </div>
+        </div>
+      </simple-hero>
 
       <paper-progress indeterminate hidden$="[[contentLoaderVisibility]]"></paper-progress>
 
@@ -279,16 +347,46 @@ export class SessionPage extends ReduxMixin(PolymerElement) {
         </div>
 
         <div id="feedback" class="additional-sections">
+        <h2 class="session-review-title" >Session Reviews</h2>
           <h3>[[feedback.headline]]</h3>
 
-          <auth-required hidden="[[!acceptingFeedback]]">
+       
             <slot slot="prompt">[[feedback.leaveFeedback]]</slot>
             <feedback-block session-id="[[session.id]]"></feedback-block>
-          </auth-required>
+     
 
           <p hidden="[[acceptingFeedback]]">[[feedback.sessionClosed]]</p>
-        </div>
+
+
+          
+          <div class="feedback-box">
+          <template is="dom-repeat" items="[[feedbacks]]">
+          <div class="feedback-item">
+              <div class="feedback-username">{{item.name}}</div>
+              <div class="feedback-rating">
+                  <div class="rating-title">Content Quality: </div>
+                  <template is="dom-repeat" items="[[item.contentRating]]">
+                    <span class="star">&starf;</span>
+                  </template>
+                  <template is="dom-repeat" items="[[item.contentRatingLeft]]">
+                    <span class="star">&star;</span>
+                  </template>
+              </div>
+              <div class="feedback-rating">
+                  <div class="rating-title">Presentation Style: </div>
+                  <template is="dom-repeat" items="[[item.styleRating]]">
+                    <span class="star">&starf;</span>
+                  </template>
+                  <template is="dom-repeat" items="[[item.styleRatingLeft]]">
+                    <span class="star">&star;</span>
+                  </template>
+              </div>
+              <div class="feedback-content">{{item.comment}}</div>
+          </div>
+          </template>
+        </div>  
       </div>
+    </div>
 
       <footer-block></footer-block>
     `;
@@ -319,6 +417,40 @@ export class SessionPage extends ReduxMixin(PolymerElement) {
   @property({ type: Boolean })
   private acceptingFeedback: boolean = false;
 
+
+  private mySession = async () => {
+    const mySessionId = (window.location.pathname).split("/")[2]!;
+    const items = await getDocs(collection(db, "sessions",mySessionId,"feedback"));
+    let feedbackArr: { name: string; styleRating: any[]; styleRatingLeft: any[]; contentRating: any[]; contentRatingLeft: any[]; comment: any; }[] = [];
+
+    items.docs.map(d=>{
+      const styleRating = d.data()['styleRating'];
+      const contentRating = d.data()['contentRating'];
+      feedbackArr.push({name:"Anonymous", styleRating:new Array(styleRating), styleRatingLeft:new Array(5-styleRating), contentRating: new Array(contentRating), contentRatingLeft: new Array(5-contentRating), comment:d.data()['comment']})
+    })
+
+    
+    
+    return feedbackArr; 
+
+  }
+
+
+ 
+
+  @property({type:Array})
+  private feedbacks:{ name: string; styleRating: any[]; styleRatingLeft: any[]; contentRating: any[]; contentRatingLeft: any[]; comment: any; }[]=[];
+
+  override  async ready(){
+    super.ready()
+   
+   let getFeedbacks =await this.mySession();
+    this.feedbacks = getFeedbacks;
+
+  }
+
+
+
   override stateChanged(state: RootState) {
     super.stateChanged(state);
     this.sessions = state.sessions;
@@ -330,11 +462,27 @@ export class SessionPage extends ReduxMixin(PolymerElement) {
 
   override connectedCallback() {
     super.connectedCallback();
-
+    this.mySession()
     if (this.sessions instanceof Initialized) {
       store.dispatch(fetchSessions);
     }
   }
+
+  constructor(){
+    super();
+  }
+
+  private collectionName:any;
+
+
+  @property({type:Array})
+  private feedBacked = this.mySession()
+  
+  
+
+
+
+
 
   @observe('user')
   private onUser(user: UserState) {
@@ -343,9 +491,17 @@ export class SessionPage extends ReduxMixin(PolymerElement) {
     }
   }
 
-  onAfterEnter(location: RouterLocation) {
+   onAfterEnter(location: RouterLocation) {
     this.sessionId = location.params?.['id']?.toString();
+    
+    
   }
+
+
+
+
+
+  
 
   @observe('session')
   private onContentLoaderVisibility(session: Session | undefined) {
@@ -385,6 +541,10 @@ export class SessionPage extends ReduxMixin(PolymerElement) {
         });
       }
     }
+  }
+
+  private printData(){
+    const data = doc(db,"sessions","132");
   }
 
   private toggleFeaturedSession(event: Event) {

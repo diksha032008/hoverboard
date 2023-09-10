@@ -218,17 +218,13 @@ export class SpeakersPage extends ReduxMixin(PolymerElement) {
                     horizontal
                     center-center
                   >
-                    <iron-icon icon="hoverboard:[[badge.name]]" class="badge-icon"></iron-icon>
+                  
                   </a>
                 </template>
               </div>
             </div>
 
-            <lazy-image
-              class="company-logo"
-              src="[[speaker.companyLogoUrl]]"
-              alt="[[speaker.company]]"
-            ></lazy-image>
+  
 
             <div class="description">
               <h2 class="name">[[speaker.name]]</h2>

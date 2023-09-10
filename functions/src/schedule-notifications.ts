@@ -4,8 +4,9 @@ import { DocumentData, DocumentSnapshot, getFirestore } from 'firebase-admin/fir
 // https://github.com/import-js/eslint-plugin-import/issues/1810
 // eslint-disable-next-line import/no-unresolved
 import { getMessaging, MessagingPayload } from 'firebase-admin/messaging';
-import * as functions from 'firebase-functions';
 import moment from 'moment';
+import { logger } from 'firebase-functions/v2';
+import { onSchedule } from 'firebase-functions/v2/scheduler';
 
 const FORMAT = 'HH:mm';
 
@@ -42,7 +43,7 @@ const removeUserTokens = (tokensToUsers) => {
 };
 
 const sendPushNotificationToUsers = async (userIds: string[], payload: MessagingPayload) => {
-  functions.logger.log(
+  logger.log(
     'sendPushNotificationToUsers user ids',
     userIds,
     'with notification',
@@ -57,7 +58,7 @@ const sendPushNotificationToUsers = async (userIds: string[], payload: Messaging
   const tokensToUsers = usersTokens.reduce((aggregator, userTokens) => {
     if (!userTokens.exists) return aggregator;
     const { tokens } = userTokens.data();
-    return { ...aggregator, tokens };
+    return { ...aggregator, ...tokens };
   }, {});
   const tokens = Object.keys(tokensToUsers);
 
@@ -66,7 +67,7 @@ const sendPushNotificationToUsers = async (userIds: string[], payload: Messaging
   messagingResponse.results.forEach((result, index) => {
     const error = result.error;
     if (error) {
-      functions.logger.error('Failure sending notification to', tokens[index], error);
+      logger.error('Failure sending notification to', tokens[index], error);
       if (
         error.code === 'messaging/invalid-registration-token' ||
         error.code === 'messaging/registration-token-not-registered'
@@ -80,9 +81,7 @@ const sendPushNotificationToUsers = async (userIds: string[], payload: Messaging
   return removeUserTokens(tokensToRemove);
 };
 
-export const scheduleNotifications = functions.pubsub
-  .schedule('every 5 minutes')
-  .onRun(async () => {
+export const scheduleNotifications = onSchedule('every 5 minutes', async () => {
     const notificationsConfigPromise = getFirestore()
       .collection('config')
       .doc('notifications')
@@ -114,15 +113,13 @@ export const scheduleNotifications = functions.pubsub
         ).subtract(10, 'minutes');
         return timeslotTime.isBetween(beforeTime, afterTime);
       });
-
-      const upcomingSessions = upcomingTimeslot.reduce((_result, timeslot) =>
+      const upcomingSessions: any[] = upcomingTimeslot.reduce((_result: any[], timeslot) =>
         timeslot.sessions.reduce(
           (aggregatedSessions, current) => [...aggregatedSessions, ...current.items],
           []
         )
       );
       const usersIdsSnapshot = await getFirestore().collection('featuredSessions').get();
-
       upcomingSessions.forEach(async (upcomingSession, sessionIndex) => {
         const sessionInfoSnapshot = await getFirestore()
           .collection('sessions')
@@ -163,14 +160,14 @@ export const scheduleNotifications = functions.pubsub
         }
 
         if (upcomingSessions.length) {
-          functions.logger.log('Upcoming sessions', upcomingSessions);
+          logger.log('Upcoming sessions', upcomingSessions);
         } else {
-          functions.logger.log('There is no sessions right now');
+          logger.log('There is no sessions right now');
         }
 
         return undefined;
       });
     } else {
-      functions.logger.log(todayDay, 'was not found in the schedule');
+      logger.log(todayDay, 'was not found in the schedule');
     }
   });

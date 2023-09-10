@@ -85,6 +85,7 @@ export class HeaderToolbar extends ReduxMixin(PolymerElement) {
           width: 32px;
           height: 32px;
           border-radius: 50%;
+          border: 0.05rem solid black;
           background-position: center;
           background-size: cover;
         }
@@ -176,13 +177,7 @@ export class HeaderToolbar extends ReduxMixin(PolymerElement) {
             <paper-tab name="[[nav.route]]" class="nav-item" link>
               <a href="[[nav.permalink]]" layout vertical center-center>[[nav.label]]</a>
             </paper-tab>
-          </template>
-
-          <paper-tab class="signin-tab" on-click="signIn" link hidden$="[[signedIn]]">
-            [[signInText]]
-          </paper-tab>
-
-          
+          </template>          
         </paper-tabs>
 
         <notification-toggle></notification-toggle>

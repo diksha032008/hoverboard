@@ -32,6 +32,11 @@
       "route": "schedule",
       "permalink": "/schedule",
       "label": "Schedule"
+    },
+    {
+      "route": "trending",
+      "permalink":"/trending",
+      "label": "Trendy Sessions"
     }
   ],
   "heroSettings": {
@@ -39,7 +44,7 @@
       "description": "Join the commuity, learn new things!",
       "background": {
         "color": "#00b0f0",
-        "image": "/images/backgrounds/home.jpg"
+        "image": "/images/backgrounds/homeBg.png"
       },
       "fontColor": "#FFF"
     },
@@ -48,6 +53,15 @@
       "metaDescription": "Read stories from our team",
       "background": {
         "color": "#FFF"
+      },
+      "fontColor": "#424242"
+    },
+    "trending": {
+      "title": "Trendy Sessions",
+      "metaDescription": "Get more info about our sessions",
+      "description":"Know more about trendy sessions based on the audience feedback.",
+      "background": {
+        "color": "#fff"
       },
       "fontColor": "#424242"
     },

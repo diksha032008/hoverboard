@@ -180,9 +180,7 @@ export class HoverboardApp extends PolymerElement {
               role="navigation"
             >
               <template is="dom-repeat" items="[[navigation]]" as="nav">
-                <a href="[[nav.permalink]]" path="[[nav.route]]" on-click="closeDrawer">
-                  [[nav.label]]
-                </a>
+                
               </template>
             </iron-selector>
 
@@ -194,7 +192,7 @@ export class HoverboardApp extends PolymerElement {
           </div>
         </app-drawer>
 
-        <app-header-layout id="headerLayout" fullbleed>
+        <app-header-layout id="headerLayout" fullbleed hidden="[[!signedIn]]">
           <app-header id="header" slot="header" condenses fixed>
             <header-toolbar drawer-opened="{{drawerOpened}}"></header-toolbar>
           </app-header>
@@ -204,7 +202,7 @@ export class HoverboardApp extends PolymerElement {
       </app-drawer-layout>
 
       <feedback-dialog></feedback-dialog>
-      <signin-dialog></signin-dialog>
+      <signin-dialog hidden="[[signedIn]]"></signin-dialog>
       <subscribe-dialog></subscribe-dialog>
       <video-dialog></video-dialog>
 
@@ -234,10 +232,13 @@ export class HoverboardApp extends PolymerElement {
   private providerUrls = signInProviders.allowedProvidersUrl;
   @property({ type: String })
   private routeName = 'home';
+  @property({ type: Boolean })
+  private signedIn = false;
 
   stateChanged(state: RootState) {
     this.tickets = state.tickets;
     this.routeName = selectRouteName(window.location.pathname);
+    this.signedIn = state.user instanceof Success;
   }
 
   constructor() {

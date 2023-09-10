@@ -2,7 +2,8 @@ import crypto from 'crypto';
 // https://github.com/import-js/eslint-plugin-import/issues/1810
 // eslint-disable-next-line import/no-unresolved
 import { getFirestore } from 'firebase-admin/firestore';
-import * as functions from 'firebase-functions';
+import { onDocumentCreated } from 'firebase-functions/v2/firestore';
+import { logger } from 'firebase-functions/v2';
 import fetch from 'node-fetch';
 
 const md5 = (data: string) => crypto.createHash('md5').update(data).digest('hex');
@@ -12,15 +13,13 @@ const getMailchimpConfig = async () => {
   return doc.exists && doc.data();
 };
 
-export const mailchimpSubscribe = functions.firestore
-  .document('/subscribers/{id}')
-  .onCreate(async (snapshot) => {
+export const mailchimpSubscribe = onDocumentCreated('/subscribers/{id}', async (snapshot) => {
     const mailchimpConfig = await getMailchimpConfig();
     if (!mailchimpConfig) {
-      functions.logger.log("Can't subscribe user, Mailchimp config is empty.");
+      logger.log("Can't subscribe user, Mailchimp config is empty.");
     }
 
-    const subscriber = snapshot.data();
+    const subscriber = snapshot.data.data();
 
     const subscriberData = {
       email_address: subscriber.email,
@@ -56,12 +55,12 @@ function subscribeToMailchimp(mailchimpConfig, subscriberData, emailHash?: strin
         const hash = md5(subscriberData.email_address);
         return subscribeToMailchimp(mailchimpConfig, subscriberData, hash);
       } else if (method === 'POST') {
-        functions.logger.log(`${subscriberData.email_address} was added to subscribe list.`);
+        logger.log(`${subscriberData.email_address} was added to subscribe list.`);
       } else if (method === 'PATCH') {
-        functions.logger.log(`${subscriberData.email_address} was updated in subscribe list.`);
+        logger.log(`${subscriberData.email_address} was updated in subscribe list.`);
       }
     })
     .catch((error) =>
-      functions.logger.error(`Error occured during Mailchimp subscription: ${error}`)
+      logger.error(`Error occured during Mailchimp subscription: ${error}`)
     );
 }

@@ -48,10 +48,34 @@ class SigninDialog extends ReduxMixin(PolymerElement) {
         .icon-facebook {
           color: var(--facebook-color);
         }
-      </style>
 
-      <mwc-dialog id="dialog" open="[[open]]" heading="[[signInText]]">
-        <div hidden$="[[isMergeState]]">
+        .signin-modal {
+          height: 100vh;
+          width: 100vw;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-image: url("images/backgrounds/loginBG.png");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }
+
+        .signin-options-container {
+          background-color: #fff;
+          margin: 0 3rem;
+          height: 15rem;
+          width: 25rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      </style>
+      
+      <div class="signin-modal">
+        <div hidden$="[[isMergeState]]" class="signin-options-container">
           <template is="dom-repeat" items="[[signInProviders.providersData]]" as="provider">
             <paper-button
               class="sign-in-button"
@@ -83,9 +107,7 @@ class SigninDialog extends ReduxMixin(PolymerElement) {
             </paper-button>
           </div>
         </div>
-
-        <mwc-button slot="primaryAction" dialogAction="close">Close</mwc-button>
-      </mwc-dialog>
+      </div>
     `;
   }
 
