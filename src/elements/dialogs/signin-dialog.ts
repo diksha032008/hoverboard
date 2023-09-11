@@ -33,20 +33,44 @@ class SigninDialog extends ReduxMixin(PolymerElement) {
         .sign-in-button {
           margin: 16px 0;
           display: block;
-          color: var(--primary-text-color);
+          color: var(--text-primary-color);
+          background-color: #007fc7;
+          font-size: x-large;
+          padding: 0.7rem 1rem;
+          font-family: 'AdineuePRO', Arial, sans-serif;
+          text-transform: unset;
+        }
+
+        @media(max-width: 400px) {
+          .sign-in-button {
+            margin: 16px 0;
+            display: block;
+            color: var(--text-primary-color);
+            background-color: #007fc7;
+            font-size: larger;
+            padding: 0.7rem 1rem;
+            font-family: 'AdineuePRO', Arial, sans-serif;
+            text-transform: unset;
+          }
+        }
+
+        @media(max-width: 330px) {
+          .sign-in-button {
+            margin: 16px 0;
+            display: block;
+            color: var(--text-primary-color);
+            background-color: #007fc7;
+            font-size: large;
+            padding: 0.7rem 1rem;
+            white-space: nowrap;
+            font-family: 'AdineuePRO', Arial, sans-serif;
+            text-transform: unset;
+          }
         }
 
         .merge-content .subtitle,
         .merge-content .explanation {
           margin-bottom: 16px;
-        }
-
-        .icon-twitter {
-          color: var(--twitter-color);
-        }
-
-        .icon-facebook {
-          color: var(--facebook-color);
         }
 
         .signin-modal {
@@ -63,10 +87,7 @@ class SigninDialog extends ReduxMixin(PolymerElement) {
         }
 
         .signin-options-container {
-          background-color: #fff;
-          margin: 0 3rem;
-          height: 15rem;
-          width: 25rem;
+          margin: 5rem 1rem 0;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -83,10 +104,6 @@ class SigninDialog extends ReduxMixin(PolymerElement) {
               provider-url="[[provider.url]]"
               flex
             >
-              <iron-icon
-                icon="hoverboard:[[provider.name]]"
-                class="icon-[[provider.name]]"
-              ></iron-icon>
               <span provider-url$="[[provider.url]]">[[provider.label]]</span>
             </paper-button>
           </template>
@@ -137,7 +154,6 @@ class SigninDialog extends ReduxMixin(PolymerElement) {
 
   override ready() {
     super.ready();
-    this.dialog.addEventListener('closed', () => closeDialog());
   }
 
   override stateChanged(state: RootState) {

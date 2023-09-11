@@ -1,11 +1,13 @@
 import { Storage } from '@google-cloud/storage';
 import { spawnSync } from 'child_process';
-import { logger, storage, setGlobalOptions } from 'firebase-functions/v2';
+import { logger, storage } from 'firebase-functions/v2';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
 
-// setGlobalOptions({ region: "asia-east2" });
+import { setGlobalOptions } from 'firebase-functions/v2';
+import { DEPLOY_REGION } from './utils.js';
+setGlobalOptions({ region: DEPLOY_REGION });
 
 const mkdirp = (path: string) => fs.promises.mkdir(path, { recursive: true });
 

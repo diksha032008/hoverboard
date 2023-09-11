@@ -5,7 +5,10 @@ import { onDocumentWritten } from 'firebase-functions/v2/firestore';
 import { logger } from 'firebase-functions/v2';
 import { sessionsSpeakersMap } from './schedule-generator/speakers-sessions-map.js';
 import { sessionsSpeakersScheduleMap } from './schedule-generator/speakers-sessions-schedule-map.js';
-import { isEmpty, ScheduleMap, SessionMap, snapshotToObject, SpeakerMap } from './utils.js';
+import { DEPLOY_REGION, isEmpty, ScheduleMap, SessionMap, snapshotToObject, SpeakerMap } from './utils.js';
+
+import { setGlobalOptions } from 'firebase-functions/v2';
+setGlobalOptions({ region: DEPLOY_REGION });
 
 const isScheduleEnabled = async (): Promise<boolean> => {
   const doc = await getFirestore().collection('config').doc('schedule').get();

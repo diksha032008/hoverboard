@@ -6,6 +6,10 @@ import { onRequest } from 'firebase-functions/v2/https';
 import fetch from 'node-fetch';
 import url, { URL } from 'url';
 
+import { setGlobalOptions } from 'firebase-functions/v2';
+import { DEPLOY_REGION } from './utils.js';
+setGlobalOptions({ region: DEPLOY_REGION });
+
 const app = express();
 
 const getSiteDomain = async () => {

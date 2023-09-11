@@ -2,7 +2,7 @@ import { firestore } from '../firebase-config';
 import data from '../../docs/default-firebase-data.json';
 
 export const importPreviousSpeakers = () => {
-  const previousSpeakers: { [key: string]: object } = data.previousSpeakers;
+  const previousSpeakers: { [key: string]: object } = {};
   if (!Object.keys(previousSpeakers).length) {
     return Promise.resolve();
   }

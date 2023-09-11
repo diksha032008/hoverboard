@@ -12,6 +12,8 @@ type Session = TempAny;
 type Schedule = TempAny;
 type Speaker = TempAny;
 
+export const DEPLOY_REGION = "asia-east2";
+
 export interface SessionMap {
   [id: string]: Session;
 }

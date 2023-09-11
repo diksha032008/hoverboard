@@ -5,7 +5,7 @@ import { AppDrawerElement } from '@polymer/app-layout/app-drawer/app-drawer';
 import '@polymer/app-layout/app-header-layout/app-header-layout';
 import '@polymer/app-layout/app-header/app-header';
 import '@polymer/app-layout/app-toolbar/app-toolbar';
-import { computed, customElement, property, query } from '@polymer/decorators';
+import { customElement, property, query } from '@polymer/decorators';
 import '@polymer/iron-icon';
 import '@polymer/iron-selector/iron-selector';
 import { html, PolymerElement } from '@polymer/polymer';
@@ -31,17 +31,18 @@ import { fetchTickets } from './store/tickets/actions';
 import { initialTicketsState } from './store/tickets/state';
 import { OpenedChanged } from './utils/app-drawer';
 import {
-  buyTicket,
   dates,
   location,
   navigation,
   offlineMessage,
   signInProviders,
   title,
+  signOut as signOutText
 } from './utils/data';
 import './utils/icons';
 import './utils/media-query';
 import { Stickied } from './utils/stickied';
+import { signOut as signOutAction } from './store/auth/actions';
 
 setPassiveTouchGestures(true);
 setRemoveNestedTemplates(true);
@@ -154,9 +155,18 @@ export class HoverboardApp extends PolymerElement {
           padding-left: 3rem;
           padding-top: 0.5rem;
         }
+
+        .drawer-signout {
+          display: flex;
+          justify-content: center;
+          padding: 10px 0;
+          background-color: #007fc7;
+          color: var(--text-primary-color);
+        }
       </style>
+      
       <app-drawer-layout drawer-width="300px" force-narrow fullbleed>
-        <app-drawer id="drawer" slot="drawer" opened="{{drawerOpened}}" swipe-open>
+        <app-drawer id="drawer" slot="drawer" opened="{{drawerOpened}}" swipe-open hidden="[[!signedIn]]">
           <app-toolbar layout vertical start>
             <div class='logo-title'>
               <div>
@@ -180,14 +190,15 @@ export class HoverboardApp extends PolymerElement {
               role="navigation"
             >
               <template is="dom-repeat" items="[[navigation]]" as="nav">
-                
+                <a href="[[nav.permalink]]" path="[[nav.route]]" on-click="closeDrawer">
+                  [[nav.label]]
+                </a>
               </template>
             </iron-selector>
 
             <div>
               <app-install></app-install>
-
-             
+              <span class="drawer-signout" role="button" on-click="signOut">[[signOutText]]</span>
             </div>
           </div>
         </app-drawer>
@@ -212,9 +223,9 @@ export class HoverboardApp extends PolymerElement {
 
   private alt = title;
   private dates = dates;
-  private buyTicket = buyTicket;
   private navigation = navigation;
   private shortLocation = location.short;
+  private signOutText = signOutText;
 
   @query('#drawer')
   drawer!: AppDrawerElement;
@@ -274,14 +285,7 @@ export class HoverboardApp extends PolymerElement {
     this.drawerOpened = e.detail.value;
   }
 
-  @computed('tickets')
-  private get ticketUrl(): string {
-    if (this.tickets instanceof Success && this.tickets.data.length > 0) {
-      const availableTicket = this.tickets.data.find((ticket) => ticket.available);
-      const ticket = availableTicket || this.tickets.data[0];
-      return ticket?.url || '';
-    } else {
-      return '';
-    }
+  private signOut(){
+    signOutAction();
   }
 }

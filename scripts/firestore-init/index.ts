@@ -11,14 +11,14 @@ import { importTickets } from './tickets';
 import { importVideos } from './videos';
 
 importConfig() // Should always be first
-  .then(() => importBlog())
+  // .then(() => importBlog())
   .then(() => importGallery())
-  .then(() => importPartners())
-  .then(() => importPreviousSpeakers())
+  // .then(() => importPartners())
+  // .then(() => importPreviousSpeakers())
   .then(() => importSchedule())
   .then(() => importSessions())
   .then(() => importSpeakers())
-  .then(() => importTeam())
+  // .then(() => importTeam())
   .then(() => importTickets())
   .then(() => importVideos())
   .then(() => {

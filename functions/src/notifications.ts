@@ -7,7 +7,9 @@ import { getMessaging, MessagingPayload } from 'firebase-admin/messaging';
 import { logger } from 'firebase-functions/v2';
 import { onDocumentCreated } from 'firebase-functions/v2/firestore';
 
-
+import { setGlobalOptions } from 'firebase-functions/v2';
+import { DEPLOY_REGION } from './utils.js';
+setGlobalOptions({ region: DEPLOY_REGION });
 
 const REMOVE_TOKEN_ERROR = [
   'messaging/invalid-registration-token',

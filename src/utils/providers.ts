@@ -1,12 +1,10 @@
-import { FacebookAuthProvider, GoogleAuthProvider, TwitterAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider, OAuthProvider } from 'firebase/auth';
 
 export enum PROVIDER {
   'https://accounts.google.com' = 'https://accounts.google.com',
   'google.com' = 'google.com',
-  'https://www.facebook.com' = 'https://www.facebook.com',
-  'facebook.com' = 'facebook.com',
-  'https://twitter.com' = 'https://twitter.com',
-  'twitter.com' = 'twitter.com',
+  'https://login.microsoftonline.com' = 'https://login.microsoftonline.com',
+  'microsoftonline.com' = 'microsoftonline.com',
 }
 
 export const getFederatedProvider = (provider: PROVIDER) => {
@@ -19,17 +17,17 @@ export const getFederatedProvider = (provider: PROVIDER) => {
       return provider;
     }
 
-    case 'https://www.facebook.com':
-    case 'facebook.com': {
-      const provider = new FacebookAuthProvider();
+    case 'https://login.microsoftonline.com':
+    case 'microsoftonline.com': {
+      const provider = new OAuthProvider('microsoft.com');
       provider.addScope('email');
-      provider.addScope('public_profile');
+      provider.addScope('profile');
+      provider.setCustomParameters({
+        tenant: 'adidasgroup.onmicrosoft.com'
+      })
       return provider;
     }
 
-    case 'https://twitter.com':
-    case 'twitter.com':
-      return new TwitterAuthProvider();
 
     default:
       throw new Error('Unsupported provider');
@@ -42,13 +40,9 @@ export const getFederatedProviderClass = (provider: PROVIDER) => {
     case 'google.com':
       return GoogleAuthProvider;
 
-    case 'https://www.facebook.com':
-    case 'facebook.com':
-      return FacebookAuthProvider;
-
-    case 'https://twitter.com':
-    case 'twitter.com':
-      return TwitterAuthProvider;
+    case 'https://login.microsoftonline.com':
+    case 'microsoftonline.com':
+      return OAuthProvider;
 
     default:
       throw new Error('Unsupported provider');
@@ -61,13 +55,9 @@ export const getProviderCompanyName = (provider: PROVIDER) => {
     case 'google.com':
       return 'Google';
 
-    case 'https://www.facebook.com':
-    case 'facebook.com':
-      return 'Facebook';
-
-    case 'https://twitter.com':
-    case 'twitter.com':
-      return 'Twitter';
+    case 'https://login.microsoftonline.com':
+    case 'microsoftonline.com':
+      return 'Microsoft';
 
     default:
       throw new Error('Unsupported provider');

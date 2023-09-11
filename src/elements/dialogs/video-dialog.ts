@@ -40,7 +40,6 @@ class VideoDialog extends ReduxMixin(PolymerElement) {
 
   override ready() {
     super.ready();
-    this.dialog.addEventListener('closed', () => closeVideoDialog());
   }
 
   override stateChanged(state: RootState) {

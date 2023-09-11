@@ -8,6 +8,7 @@ import {
   onAuthStateChanged,
   signInWithPopup,
   signOut as firebaseSignOut,
+  signInWithRedirect,
 } from 'firebase/auth';
 import { store } from '..';
 import { firebaseApp } from '../../firebase';
@@ -36,7 +37,7 @@ export const signIn = async (providerId: PROVIDER) => {
   const provider = getFederatedProvider(providerId);
 
   try {
-    await signInWithPopup(auth, provider);
+    await signInWithRedirect(auth, provider);
     store.dispatch<AuthActions>({ type: AUTH_SUCCESS, payload: true });
   } catch (error) {
     if (error instanceof FirebaseError) {

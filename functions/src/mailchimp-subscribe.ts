@@ -6,6 +6,10 @@ import { onDocumentCreated } from 'firebase-functions/v2/firestore';
 import { logger } from 'firebase-functions/v2';
 import fetch from 'node-fetch';
 
+import { setGlobalOptions } from 'firebase-functions/v2';
+import { DEPLOY_REGION } from './utils.js';
+setGlobalOptions({ region: DEPLOY_REGION });
+
 const md5 = (data: string) => crypto.createHash('md5').update(data).digest('hex');
 
 const getMailchimpConfig = async () => {

@@ -8,6 +8,10 @@ import moment from 'moment';
 import { logger } from 'firebase-functions/v2';
 import { onSchedule } from 'firebase-functions/v2/scheduler';
 
+import { setGlobalOptions } from 'firebase-functions/v2';
+import { DEPLOY_REGION } from './utils.js';
+setGlobalOptions({ region: DEPLOY_REGION });
+
 const FORMAT = 'HH:mm';
 
 const removeUserTokens = (tokensToUsers) => {
