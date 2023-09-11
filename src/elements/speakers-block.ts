@@ -163,9 +163,13 @@ export class SpeakersBlock extends ReduxMixin(PolymerElement) {
       </style>
 
       <div class="container">
-        <h1 class="container-title">[[speakersBlock.title]]</h1>
+        <h1 class="container-title" style ="FONT-WEIGHT: BOLD;
+        LETTER-SPACING: -1PX;
+        TEXT-ALIGN: center;
+        FONT-SIZE: x-large;
+        margin-top:-30px;">KEY NOTE SPEAKERS</h1>
 
-        <div class="speakers-wrapper">
+        <div class="speakers-wrapper" style="display: inline-flex;margin-top:-10px">
           <template is="dom-repeat" items="[[featuredSpeakers]]" as="speaker">
             <a class="speaker" href$="[[speakerUrl(speaker.id)]]">
               <div relative>
@@ -174,29 +178,7 @@ export class SpeakersBlock extends ReduxMixin(PolymerElement) {
                   src="[[speaker.photoUrl]]"
                   alt="[[speaker.name]]"
                 ></lazy-image>
-                <div class="badges" layout horizontal>
-                  <template is="dom-repeat" items="[[speaker.badges]]" as="badge">
-                    <a
-                      class$="badge [[badge.name]]-b"
-                      href$="[[badge.link]]"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title$="[[badge.description]]"
-                      layout
-                      horizontal
-                      center-center
-                    >
-                      <iron-icon icon="hoverboard:[[badge.name]]" class="badge-icon"></iron-icon>
-                    </a>
-                  </template>
-                </div>
               </div>
-
-              <lazy-image
-                class="company-logo"
-                src="[[speaker.companyLogoUrl]]"
-                alt="[[speaker.company]]"
-              ></lazy-image>
 
               <div class="description">
                 <text-truncate lines="1">
@@ -209,13 +191,6 @@ export class SpeakersBlock extends ReduxMixin(PolymerElement) {
             </a>
           </template>
         </div>
-
-        <a href="[[speakersBlock.callToAction.link]]">
-          <paper-button class="cta-button animated icon-right">
-            <span>[[speakersBlock.callToAction.label]]</span>
-            <iron-icon icon="hoverboard:arrow-right-circle"></iron-icon>
-          </paper-button>
-        </a>
       </div>
     `;
   }

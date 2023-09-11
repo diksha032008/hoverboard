@@ -44,7 +44,7 @@
       "description": "Join the commuity, learn new things!",
       "background": {
         "color": "#00b0f0",
-        "image": "/images/backgrounds/home.jpg"
+        "image": "/images/backgrounds/homeBg.png"
       },
       "fontColor": "#FFF"
     },

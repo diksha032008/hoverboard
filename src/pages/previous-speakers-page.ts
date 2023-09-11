@@ -155,7 +155,6 @@ export class PreviousSpeakersPage extends ReduxMixin(PolymerElement) {
               <h2 class="name">[[speaker.name]]</h2>
               <div class="origin">[[speaker.country]]</div>
 
-              <img class="company-logo" src$="[[speaker.companyLogo]]" />
 
               <div class="sessions">
                 <h5>[[previousYears]]:</h5>

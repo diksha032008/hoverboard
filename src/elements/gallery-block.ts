@@ -138,7 +138,7 @@ export class GalleryBlock extends ReduxMixin(PolymerElement) {
         }
       </style>
 
-      <div class="photos-grid">
+      <div class="photos-grid" style="margin-top:-30px;">
         <template is="dom-if" if="[[pending]]">
           <p>Loading...</p>
         </template>

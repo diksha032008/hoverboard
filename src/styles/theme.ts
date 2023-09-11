@@ -201,16 +201,20 @@ export const theme = css`
     padding: 0;
     font-size: 32px;
     line-height: 30px;
+    margin-top:-60px;
   }
 
   .countdown-title {
     text-align: center;
-    color: var(--default-primary-color);
+    color:#000000;
     margin-bottom: 24px;
     padding: 0;
-    font-size: 40px;
+    font-size: 25px;
     line-height: 35px;
     flex-wrap: wrap;
+    font-weight:bold;
+    letter-spacing:-1px;
+    margin-top:-20px;
   }
 
   .countdown-time {
@@ -222,7 +226,10 @@ export const theme = css`
     font-size: 35px;
     line-height: 35px;
     flex-wrap: wrap;
-    background: var(--default-primary-color);
+   background-image: url('images/backgrounds/timerBg.png');
+   background-size: cover;
+  background-position: center bottom; /* This positions the image at the center horizontally and at the bottom vertically */
+   padding-bottom: 20px;
   }
 
   .big-icon {
