@@ -134,7 +134,9 @@ export class AboutBlock extends ThemedElement {
         <!-- Countdown timer -->
    
         
-        <div id="countdown-timer"></div>
+        <div id="countdown-timer">
+        style="margin-top:-20px;
+        font-weight: 900;"</div>
    
       </div>
     `;

@@ -174,7 +174,9 @@ export class SpeakersBlock extends ReduxMixin(PolymerElement) {
     justify-content: space-around;
     ">KEY NOTE SPEAKERS</h1>
 
-        <div class="speakers-wrapper">
+        <div class="speakers-wrapper"
+        style="display: inline-flex;margin-top: -10px;">
+        
           <template is="dom-repeat" items="[[featuredSpeakers]]" as="speaker">
             <a class="speaker" href$="[[speakerUrl(speaker.id)]]">
               <div relative>
