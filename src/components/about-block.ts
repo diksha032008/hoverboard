@@ -14,8 +14,9 @@ export class AboutBlock extends ThemedElement {
     // Calculate the time remaining until October 18,2023 (in milliseconds)
     const targetDate = new Date('2023-10-18T00:00:00Z').getTime();
     const currentDate = new Date().getTime();
-    const timeRemaining = targetDate - currentDate;
+    const timeRemaining = 300;// targetDate - currentDate;
 
+   
     // Update the countdown timer immediately
     this.updateCountdownTimer(timeRemaining);
 
@@ -24,12 +25,12 @@ export class AboutBlock extends ThemedElement {
       const updatedTimeRemaining = targetDate - new Date().getTime();
       this.updateCountdownTimer(updatedTimeRemaining);
     }, 1000);
+  
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback();
     const countdownTimer = this.shadowRoot?.getElementById('countdown-timer');
-
 
     // Clear the countdown interval when the component is disconnected
     if (this.countdownInterval) {
@@ -47,8 +48,26 @@ export class AboutBlock extends ThemedElement {
 
     if (countdownTimer) {
       countdownTimer.innerHTML = `
-        <h1 class="countdown-title" style="text-align:center;">Countdown To The Most Awaited Event Of The Year</h1>
-        <h2 class = "countdown-time">${days} days ${hours} hours ${minutes} minutes ${seconds} seconds</h2>
+        <h1 class="countdown-title" style="text-align:center;">COUNTDOWN TO THE MOST AWAITED EVENT OF THE YEAR</h1>
+        
+        <div class="countdown-time">
+        <div>
+            <h2 class="countdown-values">${days}</h2>
+            <h3 class="countdown-constants">Days</h3>
+        </div>
+        <div>
+            <h2 class="countdown-values">${hours}</h2>
+            <h3 class="countdown-constants">Hours</h3>
+        </div>
+        <div>
+            <h2 class="countdown-values">${minutes}</h2>
+            <h3 class="countdown-constants">Minutes</h3>
+        </div>
+        <div>
+            <h2 class="countdown-values">${seconds}</h2>
+            <h3 class="countdown-constants">Seconds</h3>
+        </div>
+    </div>
       `;
     }
   }
@@ -63,6 +82,23 @@ export class AboutBlock extends ThemedElement {
           grid-gap: 32px;
           grid-template-columns: 1fr;
         }
+
+        .countdown-container {
+          display: flex;
+          justify-content: space-between;
+          text-align: center;
+          margin-bottom: 10px;
+      }
+
+      .countdown-values {
+          font-size: 35px;
+          margin-right: 10px;
+      }
+
+      .countdown-constants {
+          font-size: 18px;
+          margin-right: 10px;
+      }
 
         .statistics-block {
           width: 100%;
@@ -111,7 +147,7 @@ export class AboutBlock extends ThemedElement {
 
         .countdown-time{
         height:300px;
-            padding-top:120px;
+              padding-top:120px;
             text-align:center;
         }
           

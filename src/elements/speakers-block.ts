@@ -169,7 +169,7 @@ export class SpeakersBlock extends ReduxMixin(PolymerElement) {
         FONT-SIZE: x-large;
         margin-top:-30px;">KEY NOTE SPEAKERS</h1>
 
-        <div class="speakers-wrapper" style="display: inline-flex;margin-top:-10px">
+        <div class="speakers-wrapper" style="display:flex;justify-content:space-around;margin-top:-10px">
           <template is="dom-repeat" items="[[featuredSpeakers]]" as="speaker">
             <a class="speaker" href$="[[speakerUrl(speaker.id)]]">
               <div relative>

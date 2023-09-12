@@ -166,7 +166,7 @@ export class HoverboardApp extends PolymerElement {
       </style>
       
       <app-drawer-layout drawer-width="300px" force-narrow fullbleed>
-        <app-drawer id="drawer" slot="drawer" opened="{{drawerOpened}}" swipe-open hidden="[[!signedIn]]">
+        <app-drawer id="drawer" slot="drawer" opened="{{drawerOpened}}" swipe-open >
           <app-toolbar layout vertical start>
             <div class='logo-title'>
               <div>
@@ -203,7 +203,7 @@ export class HoverboardApp extends PolymerElement {
           </div>
         </app-drawer>
 
-        <app-header-layout id="headerLayout" fullbleed hidden="[[!signedIn]]">
+        <app-header-layout id="headerLayout" fullbleed >
           <app-header id="header" slot="header" condenses fixed>
             <header-toolbar drawer-opened="{{drawerOpened}}"></header-toolbar>
           </app-header>
@@ -213,7 +213,7 @@ export class HoverboardApp extends PolymerElement {
       </app-drawer-layout>
 
       <feedback-dialog></feedback-dialog>
-      <signin-dialog hidden="[[signedIn]]"></signin-dialog>
+      
       <subscribe-dialog></subscribe-dialog>
       <video-dialog></video-dialog>
 

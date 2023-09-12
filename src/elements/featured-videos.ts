@@ -141,7 +141,7 @@ export class FeaturedVideos extends ReduxMixin(PolymerElement) {
       </style>
       <div class="container">
         <div class="header" layout horizontal justified center wrap>
-          <h1 class="container-title" style="font-weight: bold;
+          <h1 class="container-title" style="font-weight: bold; text-align:center;letter-spacing:-1px;
           font-size: x-large;">[[featuredVideos.title]]</h1>
         </div>
 

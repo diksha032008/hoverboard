@@ -202,6 +202,7 @@ export const theme = css`
     font-size: 32px;
     line-height: 30px;
     margin-top:-60px;
+   
   }
 
   .countdown-title {
@@ -218,13 +219,13 @@ export const theme = css`
   }
 
   .countdown-time {
+    display: flex;
+    justify-content: center;
     text-align: center;
     color: white;
-    margin-top: 50px
-    margin-bottom: 50px;
-    padding: 10;
-    font-size: 35px;
-    line-height: 35px;
+    margin-top: 40px
+    margin-bottom: 40px;
+    line-height: 25px;
     flex-wrap: wrap;
    background-image: url('images/backgrounds/timerBg.png');
    background-size: cover;
