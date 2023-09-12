@@ -99,7 +99,7 @@ export const theme = css`
   h6 {
     margin: 0;
     font-weight: bold;
-    font-family:'adineueProCond',Arial, sans-serif;
+    font-family:'AdineuePRO', Arial, sans-serif;
   }
 
   h1 {

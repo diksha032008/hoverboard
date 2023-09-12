@@ -164,7 +164,7 @@ export class SpeakersBlock extends ReduxMixin(PolymerElement) {
 
       <div class="container">
         <h1 class="container-title" style ="FONT-WEIGHT: BOLD;
-        LETTER-SPACING: -1PX;
+        LETTER-SPACING: 1PX;
         TEXT-ALIGN: center;
         FONT-SIZE: x-large;
         margin-top:-30px;">KEY NOTE SPEAKERS</h1>

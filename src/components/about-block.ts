@@ -14,7 +14,7 @@ export class AboutBlock extends ThemedElement {
     // Calculate the time remaining until October 18,2023 (in milliseconds)
     const targetDate = new Date('2023-10-18T00:00:00Z').getTime();
     const currentDate = new Date().getTime();
-    const timeRemaining = 300;// targetDate - currentDate;
+    const timeRemaining = targetDate - currentDate;
 
    
     // Update the countdown timer immediately
@@ -88,6 +88,7 @@ export class AboutBlock extends ThemedElement {
           justify-content: space-between;
           text-align: center;
           margin-bottom: 10px;
+          letter-spacing: 1px;
       }
 
       .countdown-values {
@@ -146,12 +147,15 @@ export class AboutBlock extends ThemedElement {
         }
 
         .countdown-time{
-        height:300px;
-              padding-top:120px;
+            height:300px;
+            padding-top:120px;
             text-align:center;
         }
           
-
+        h2.countdown-values {
+          font-family: 'AdineuePRO', Arial, sans-serif;
+          font-weight: normal;
+        }
 
 
       `,
